@@ -140,6 +140,7 @@
                     ".tsx"
                 ]
             }
-        }
+        },
+        "import/core-modules": ["dayjs"]
     }
 }

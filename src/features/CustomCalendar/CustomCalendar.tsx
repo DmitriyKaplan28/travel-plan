@@ -1,18 +1,30 @@
+import { Dayjs } from 'dayjs';
+
 import React from 'react';
 
 import { Badge, BadgeProps, Calendar } from 'antd';
-import { Dayjs } from 'dayjs';
 
-const getListData = (value: Dayjs) => {
+type listDataType = listItemType[];
+
+type listItemType = {
+  type: string;
+  content: string;
+};
+
+type getMonthDataType = number | undefined;
+
+const getListData = (value: Dayjs): listDataType => {
   let listData;
 
   switch (value.date()) {
+    // eslint-disable-next-line no-magic-numbers
     case 8:
       listData = [
         { type: 'warning', content: 'This is warning event.' },
         { type: 'success', content: 'This is usual event.' },
       ];
       break;
+    // eslint-disable-next-line no-magic-numbers
     case 10:
       listData = [
         { type: 'warning', content: 'This is warning event.' },
@@ -20,6 +32,7 @@ const getListData = (value: Dayjs) => {
         { type: 'error', content: 'This is error event.' },
       ];
       break;
+    // eslint-disable-next-line no-magic-numbers
     case 15:
       listData = [
         { type: 'warning', content: 'This is warning event' },
@@ -36,14 +49,16 @@ const getListData = (value: Dayjs) => {
   return listData || [];
 };
 
-const getMonthData = (value: Dayjs) => {
+const getMonthData = (value: Dayjs): getMonthDataType => {
+  // eslint-disable-next-line no-magic-numbers
   if (value.month() === 8) {
+    // eslint-disable-next-line no-magic-numbers
     return 1394;
   }
 };
 
 export const CustomCalendar: React.FC = () => {
-  const monthCellRender = (value: Dayjs) => {
+  const monthCellRender = (value: Dayjs): any => {
     const num = getMonthData(value);
 
     return num ? (
@@ -54,7 +69,7 @@ export const CustomCalendar: React.FC = () => {
     ) : null;
   };
 
-  const dateCellRender = (value: Dayjs) => {
+  const dateCellRender = (value: Dayjs): any => {
     const listData = getListData(value);
 
     return (
