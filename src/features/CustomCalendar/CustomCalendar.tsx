@@ -36,7 +36,7 @@ const getListData = (value: Dayjs): listDataType => {
     case 15:
       listData = [
         { type: 'warning', content: 'This is warning event' },
-        { type: 'success', content: 'This is very long usual event。。....' },
+        { type: 'success', content: 'This is very long usual event....' },
         { type: 'error', content: 'This is error event 1.' },
         { type: 'error', content: 'This is error event 2.' },
         { type: 'error', content: 'This is error event 3.' },
@@ -58,7 +58,7 @@ const getMonthData = (value: Dayjs): getMonthDataType => {
 };
 
 export const CustomCalendar: React.FC = () => {
-  const monthCellRender = (value: Dayjs): any => {
+  const monthCellRender: React.FC<Dayjs> = (value: Dayjs) => {
     const num = getMonthData(value);
 
     return num ? (
@@ -69,7 +69,7 @@ export const CustomCalendar: React.FC = () => {
     ) : null;
   };
 
-  const dateCellRender = (value: Dayjs): any => {
+  const dateCellRender: React.FC<Dayjs> = (value: Dayjs): any => {
     const listData = getListData(value);
 
     return (
